@@ -25,6 +25,7 @@
     [super viewWillAppear:animated];
     UIButton *addContactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
     [addContactBtn setTitle:@"+" forState:UIControlStateNormal];
+    [addContactBtn addTarget:self action:@selector(addContact) forControlEvents:UIControlEventTouchDown];
     [addContactBtn setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:addContactBtn];
     self.contactTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.height-50, self.view.frame.size.width)];
@@ -50,6 +51,19 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+
+-(void)addContact{
+    
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 - (void)didReceiveMemoryWarning {
