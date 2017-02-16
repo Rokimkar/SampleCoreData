@@ -16,6 +16,7 @@
 		9E55D58C1E4F857800669D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E55D58A1E4F857800669D77 /* LaunchScreen.storyboard */; };
 		9E55D5971E4F857900669D77 /* SampleCoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55D5961E4F857900669D77 /* SampleCoreDataTests.m */; };
 		9E55D5A21E4F857900669D77 /* SampleCoreDataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55D5A11E4F857900669D77 /* SampleCoreDataUITests.m */; };
+		9E55D5B31E557AC600669D77 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55D5B21E557AC600669D77 /* DeviceInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		9E55D59D1E4F857900669D77 /* SampleCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E55D5A11E4F857900669D77 /* SampleCoreDataUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleCoreDataUITests.m; sourceTree = "<group>"; };
 		9E55D5A31E4F857900669D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E55D5B11E557AC600669D77 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		9E55D5B21E557AC600669D77 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				9E55D57D1E4F857800669D77 /* AppDelegate.m */,
 				9E55D57F1E4F857800669D77 /* ViewController.h */,
 				9E55D5801E4F857800669D77 /* ViewController.m */,
+				9E55D5B11E557AC600669D77 /* DeviceInfo.h */,
+				9E55D5B21E557AC600669D77 /* DeviceInfo.m */,
 				9E55D5821E4F857800669D77 /* Main.storyboard */,
 				9E55D5881E4F857800669D77 /* Assets.xcassets */,
 				9E55D58A1E4F857800669D77 /* LaunchScreen.storyboard */,
@@ -278,6 +283,7 @@
 			files = (
 				9E55D5871E4F857800669D77 /* SampleCoreData.xcdatamodeld in Sources */,
 				9E55D5811E4F857800669D77 /* ViewController.m in Sources */,
+				9E55D5B31E557AC600669D77 /* DeviceInfo.m in Sources */,
 				9E55D57E1E4F857800669D77 /* AppDelegate.m in Sources */,
 				9E55D57B1E4F857800669D77 /* main.m in Sources */,
 			);

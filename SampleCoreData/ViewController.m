@@ -54,6 +54,9 @@
 }
 
 -(void)addContact{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    //creating a new object.
     
 }
 
