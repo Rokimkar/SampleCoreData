@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 #import "AddDeviceViewController.h"
+#import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+
+#define App_Delegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *contactTableView;
+@property (strong) NSMutableArray *devicesArray;
 @end
 
 @implementation ViewController
@@ -35,11 +39,31 @@
     //[self.view addSubview:addContactBtn];
     self.contactTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.height-50, self.view.frame.size.width)];
     [self.view addSubview:self.contactTableView];
+    self.devicesArray = [self fetchDevices];
+}
+
+-(NSMutableArray *)fetchDevices{
+    NSMutableArray *devices = [[NSMutableArray alloc]init];
+    NSManagedObjectContext *context = App_Delegate.managedObjectContext;
+    if (context){
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entity" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        
+        NSError *error;
+        
+        NSMutableArray *responseArray= [[NSMutableArray alloc] initWithArray:[App_Delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]];
+        devices = responseArray;
+        //NSLog(@"%@",[responseArray class]);
+    }
+    return devices;
 }
 
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (self.devicesArray && self.devicesArray.count)
+        return self.devicesArray.count;
+    return 0;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -62,17 +86,11 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddDeviceViewController *addDeviceVC = [storyBoard instantiateViewControllerWithIdentifier:@"AddDeviceViewController"];
     [self.navigationController pushViewController:addDeviceVC animated:YES];
-//    NSManagedObjectContext *context = [self managedObjectContext];
-//    
-//    //creating a new object.
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entity" inManagedObjectContext:context];
-//    NSManagedObject *device = [[NSManagedObject alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
-//    [device setValue:@"iPhone 7" forKey:@"name"];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
+    id delegate = App_Delegate;
     if ([delegate performSelector:@selector(managedObjectContext)]) {
         context = [delegate managedObjectContext];
     }

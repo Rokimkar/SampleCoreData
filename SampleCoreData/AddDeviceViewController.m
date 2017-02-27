@@ -7,7 +7,10 @@
 //
 
 #import "AddDeviceViewController.h"
+#import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+
+#define App_Delegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 @interface AddDeviceViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -33,13 +36,25 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
+    id delegate = App_Delegate;
     if ([delegate performSelector:@selector(managedObjectContext)]) {
         context = [delegate managedObjectContext];
     }
     return context;
 }
+
 - (IBAction)saveBtnTapped:(id)sender {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    if (context){
+        NSManagedObject *device = [NSEntityDescription insertNewObjectForEntityForName:@"Entity" inManagedObjectContext:App_Delegate.managedObjectContext];
+        [device setValue:self.nameTextField.text forKey:@"name"];
+        [device setValue:self.companyTextfield.text forKey:@"company"];
+        [device setValue:self.versionTextField.text forKey:@"version"];
+        NSError *error = nil;
+        if (![context save:&error]){
+            NSLog(@"can't save %@ %@",error,[error localizedDescription]);
+        }
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
