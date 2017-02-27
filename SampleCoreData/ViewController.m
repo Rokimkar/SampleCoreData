@@ -35,13 +35,14 @@
     self.contactTableView.dataSource = self;
     self.contactTableView.delegate = self;
     [self.view addSubview:self.contactTableView];
-    self.devicesArray = [self fetchDevices];
     [self.contactTableView registerNib:[UINib nibWithNibName:@"DeviceTableViewCell" bundle:nil] forCellReuseIdentifier:@"DeviceTableViewCell"];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.devicesArray = [self fetchDevices];
+    [self.contactTableView reloadData];
 }
 
 -(NSMutableArray *)fetchDevices{
