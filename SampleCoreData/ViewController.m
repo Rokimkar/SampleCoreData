@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AddDeviceViewController.h"
 #import <CoreData/CoreData.h>
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -24,11 +25,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    UIButton *addContactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+    UIButton *addContactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [addContactBtn setTitle:@"+" forState:UIControlStateNormal];
+    [addContactBtn.titleLabel setFont:[UIFont systemFontOfSize:24]];
     [addContactBtn addTarget:self action:@selector(addContact) forControlEvents:UIControlEventTouchDown];
     [addContactBtn setBackgroundColor:[UIColor grayColor]];
-    [self.view addSubview:addContactBtn];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithCustomView:addContactBtn];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    //[self.view addSubview:addContactBtn];
     self.contactTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.height-50, self.view.frame.size.width)];
     [self.view addSubview:self.contactTableView];
 }
@@ -55,6 +59,9 @@
 }
 
 -(void)addContact{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddDeviceViewController *addDeviceVC = [storyBoard instantiateViewControllerWithIdentifier:@"AddDeviceViewController"];
+    [self.navigationController pushViewController:addDeviceVC animated:YES];
 //    NSManagedObjectContext *context = [self managedObjectContext];
 //    
 //    //creating a new object.
