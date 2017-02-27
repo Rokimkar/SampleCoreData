@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *contactTableView;
@@ -54,10 +55,12 @@
 }
 
 -(void)addContact{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    //creating a new object.
-    
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    
+//    //creating a new object.
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entity" inManagedObjectContext:context];
+//    NSManagedObject *device = [[NSManagedObject alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
+//    [device setValue:@"iPhone 7" forKey:@"name"];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
