@@ -18,6 +18,8 @@
 		9E55D5A21E4F857900669D77 /* SampleCoreDataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55D5A11E4F857900669D77 /* SampleCoreDataUITests.m */; };
 		9E55D5B31E557AC600669D77 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E55D5B21E557AC600669D77 /* DeviceInfo.m */; };
 		9E5C53531E640E120045EA5F /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C53521E640E120045EA5F /* AddDeviceViewController.m */; };
+		9E5C53571E64A6130045EA5F /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C53551E64A6130045EA5F /* DeviceTableViewCell.m */; };
+		9E5C53581E64A6130045EA5F /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C53561E64A6130045EA5F /* DeviceTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		9E55D5B21E557AC600669D77 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
 		9E5C53511E640E120045EA5F /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		9E5C53521E640E120045EA5F /* AddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
+		9E5C53541E64A6130045EA5F /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewCell.h; sourceTree = "<group>"; };
+		9E5C53551E64A6130045EA5F /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
+		9E5C53561E64A6130045EA5F /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,9 @@
 				9E55D57D1E4F857800669D77 /* AppDelegate.m */,
 				9E55D57F1E4F857800669D77 /* ViewController.h */,
 				9E55D5801E4F857800669D77 /* ViewController.m */,
+				9E5C53541E64A6130045EA5F /* DeviceTableViewCell.h */,
+				9E5C53551E64A6130045EA5F /* DeviceTableViewCell.m */,
+				9E5C53561E64A6130045EA5F /* DeviceTableViewCell.xib */,
 				9E5C53511E640E120045EA5F /* AddDeviceViewController.h */,
 				9E5C53521E640E120045EA5F /* AddDeviceViewController.m */,
 				9E55D5B11E557AC600669D77 /* DeviceInfo.h */,
@@ -262,6 +270,7 @@
 				9E55D58C1E4F857800669D77 /* LaunchScreen.storyboard in Resources */,
 				9E55D5891E4F857800669D77 /* Assets.xcassets in Resources */,
 				9E55D5841E4F857800669D77 /* Main.storyboard in Resources */,
+				9E5C53581E64A6130045EA5F /* DeviceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +297,7 @@
 			files = (
 				9E55D5871E4F857800669D77 /* SampleCoreData.xcdatamodeld in Sources */,
 				9E55D5811E4F857800669D77 /* ViewController.m in Sources */,
+				9E5C53571E64A6130045EA5F /* DeviceTableViewCell.m in Sources */,
 				9E5C53531E640E120045EA5F /* AddDeviceViewController.m in Sources */,
 				9E55D5B31E557AC600669D77 /* DeviceInfo.m in Sources */,
 				9E55D57E1E4F857800669D77 /* AppDelegate.m in Sources */,

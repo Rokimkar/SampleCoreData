@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AddDeviceViewController.h"
 #import "AppDelegate.h"
+#import "DeviceTableViewCell.h"
 #import <CoreData/CoreData.h>
 
 #define App_Delegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
@@ -22,13 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.contactTableView.dataSource = self;
-    self.contactTableView.delegate = self;
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     UIButton *addContactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [addContactBtn setTitle:@"+" forState:UIControlStateNormal];
     [addContactBtn.titleLabel setFont:[UIFont systemFontOfSize:24]];
@@ -38,8 +32,16 @@
     self.navigationItem.rightBarButtonItem = rightButton;
     //[self.view addSubview:addContactBtn];
     self.contactTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.height-50, self.view.frame.size.width)];
+    self.contactTableView.dataSource = self;
+    self.contactTableView.delegate = self;
     [self.view addSubview:self.contactTableView];
     self.devicesArray = [self fetchDevices];
+    [self.contactTableView registerNib:[UINib nibWithNibName:@"DeviceTableViewCell" bundle:nil] forCellReuseIdentifier:@"DeviceTableViewCell"];
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 -(NSMutableArray *)fetchDevices{
@@ -71,7 +73,11 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [UITableViewCell new];
+    DeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DeviceTableViewCell" forIndexPath:indexPath];
+    NSManagedObject *device = [self.devicesArray objectAtIndex:indexPath.row];
+    [cell bindData:[device valueForKey:@"name"]];
+    
+    return cell;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
