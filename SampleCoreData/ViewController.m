@@ -11,10 +11,13 @@
 #import "AppDelegate.h"
 #import "DeviceTableViewCell.h"
 #import <CoreData/CoreData.h>
+#import <FBMemoryProfiler/FBMemoryProfiler.h>
 
 #define App_Delegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
-@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    FBMemoryProfiler *_memoryProfiler;
+}
 @property (strong,nonatomic) UITableView *contactTableView;
 @property (strong) NSMutableArray *devicesArray;
 @end
@@ -23,6 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    FBMemoryProfiler *memoryProfiler = [FBMemoryProfiler new];
+    [memoryProfiler enable];
+    
+    // Store memory profiler somewhere to extend it's lifetime
+    _memoryProfiler = memoryProfiler;
+    
     UIButton *addContactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [addContactBtn setTitle:@"+" forState:UIControlStateNormal];
     [addContactBtn.titleLabel setFont:[UIFont systemFontOfSize:24]];
